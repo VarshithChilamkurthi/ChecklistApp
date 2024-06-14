@@ -11,8 +11,9 @@ class ChooseIconViewController: UIViewController {
 
     @IBOutlet var chooseIconTable: UITableView!
     
+    var sendDataClosure: ((String, String) -> ())?
+    
     var iconData: [ChooseIconData] = []
-    var delegate: changeCell2Data?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +31,7 @@ class ChooseIconViewController: UIViewController {
         ChooseIconData(image: "carrot", iconName: "Groceries"),
         ChooseIconData(image: "tray.and.arrow.down", iconName: "Inbox"),
         ChooseIconData(image: "camera", iconName: "Photos"),
-        ChooseIconData(image: "airplane", iconName: "Trips")]
+        ChooseIconData(image: "airplane.departure", iconName: "Trips")]
     }
 }
 
@@ -56,13 +57,13 @@ extension ChooseIconViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.row == 0 {
             print(indexPath.row)
             print("No Icon")
-            delegate?.changeCell2Data("No Icon", "folder")
+            sendDataClosure?("No Icon", "folder")
             navigationController?.popViewController(animated: true)
         } else {
-            print(indexPath.row)
-            print(iconData[indexPath.row - 1].iconName)
-            print(iconData[indexPath.row - 1].image)
-            delegate?.changeCell2Data(iconData[indexPath.row - 1].iconName, iconData[indexPath.row - 1].image)
+//            print(indexPath.row)
+//            print(iconData[indexPath.row - 1].iconName)
+//            print(iconData[indexPath.row - 1].image)
+            sendDataClosure?(iconData[indexPath.row - 1].iconName, iconData[indexPath.row - 1].image)
             navigationController?.popViewController(animated: true)
         }
     }

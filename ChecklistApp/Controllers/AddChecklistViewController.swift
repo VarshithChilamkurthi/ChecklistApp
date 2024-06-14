@@ -11,6 +11,9 @@ class AddChecklistViewController: UIViewController, UITableViewDataSource, UITab
 
     @IBOutlet var tableView: UITableView!
     
+    var sendDataToChecklistViewController: ((String) -> ())?
+    var selectedIconImage: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 247/255, alpha: 1)
@@ -27,7 +30,12 @@ class AddChecklistViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     @objc func doneButtonTapped() {
-        navigationController?.popViewController(animated: true)
+        // MARK: - Todo
+        //just sending imageData for now. Need to send text as well.
+        if let imageData = selectedIconImage {
+            sendDataToChecklistViewController?(imageData)
+            navigationController?.popViewController(animated: true)
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -49,10 +57,10 @@ class AddChecklistViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
+        if indexPath.section == 0 { //cell1
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath)
             return cell
-        } else {
+        } else { //cell2
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddChecklistCell2TableViewCell", for: indexPath) as! AddChecklistCell2TableViewCell
             return cell
         }
@@ -61,11 +69,14 @@ class AddChecklistViewController: UIViewController, UITableViewDataSource, UITab
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //usually i should do this inside if indexPath.section == 1. but since the section 0 is already filled with textfield, it's working fine.
         let civc = sb.instantiateViewController(withIdentifier: "ChooseIconViewController") as! ChooseIconViewController
-        //need explanation why setting delegate
-        if let cell = tableView.cellForRow(at: indexPath) as? AddChecklistCell2TableViewCell {
-                        civc.delegate = cell
-                    }
         self.navigationController?.pushViewController(civc, animated: true)
+        //getting data from ChooseIconVC
+        civc.sendDataClosure = { iconName, iconImage in
+            let cell = tableView.cellForRow(at: indexPath) as! AddChecklistCell2TableViewCell
+            cell.changeCell2Data(iconName, iconImage)
+            self.selectedIconImage = iconImage
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

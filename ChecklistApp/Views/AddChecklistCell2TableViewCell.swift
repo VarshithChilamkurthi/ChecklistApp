@@ -7,14 +7,21 @@
 
 import UIKit
 
-protocol changeCell2Data {
-    func changeCell2Data(_ iconName: String, _ iconImage: String)
-}
+//protocol changeCell2Data {
+//    func changeCell2Data(_ iconName: String, _ iconImage: String)
+//}
+//
+//struct IconVariables {
+//    var iconName: String
+//    var iconImage: String
+//}
 
-class AddChecklistCell2TableViewCell: UITableViewCell, changeCell2Data {
+class AddChecklistCell2TableViewCell: UITableViewCell {
 
     @IBOutlet var cell2IconName: UILabel!
     @IBOutlet var cell2IconImage: UIImageView!
+    
+//    var iconVariables: IconVariables?
     
     override func awakeFromNib() {
         super.awakeFromNib()

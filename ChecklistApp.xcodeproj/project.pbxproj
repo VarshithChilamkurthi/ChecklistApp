@@ -100,6 +100,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D2A1B3112C1C15760027090F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D2DC2C102C11C8E3004F87B8 /* ChecklistData.swift */,
+				D2DC2CAD2C163B53004F87B8 /* ChooseIconData.swift */,
+				D2DC2CA12C129964004F87B8 /* ChecklistItemsData.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D2A1B3122C1C15F40027090F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D2DC2BE12C11BCF6004F87B8 /* ChecklistViewController.swift */,
+				D2DC2CA32C12D816004F87B8 /* AddChecklistViewController.swift */,
+				D2DC2CA92C162AC0004F87B8 /* ChooseIconViewController.swift */,
+				D2DC2C122C11CE05004F87B8 /* ChecklistItemsViewController.swift */,
+				D2DC2CB32C167E7F004F87B8 /* AddItemViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D2A1B3132C1C160F0027090F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D2DC2C0D2C11BE3E004F87B8 /* ChecklistTableViewCell.swift */,
+				D2DC2CB12C1651AC004F87B8 /* AddChecklistCell2TableViewCell.swift */,
+				D2DC2CAF2C16417C004F87B8 /* ChooseIconTableViewCell.swift */,
+				D2DC2C152C11D0C2004F87B8 /* ChecklistItemsTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		D2DC2BD12C11BCF6004F87B8 = {
 			isa = PBXGroup;
 			children = (
@@ -123,24 +156,15 @@
 		D2DC2BDC2C11BCF6004F87B8 /* ChecklistApp */ = {
 			isa = PBXGroup;
 			children = (
-				D2DC2CAB2C162D78004F87B8 /* sb.swift */,
+				D2A1B3112C1C15760027090F /* Models */,
+				D2A1B3132C1C160F0027090F /* Views */,
+				D2A1B3122C1C15F40027090F /* Controllers */,
 				D2DC2BDD2C11BCF6004F87B8 /* AppDelegate.swift */,
 				D2DC2BDF2C11BCF6004F87B8 /* SceneDelegate.swift */,
-				D2DC2BE12C11BCF6004F87B8 /* ChecklistViewController.swift */,
-				D2DC2C0D2C11BE3E004F87B8 /* ChecklistTableViewCell.swift */,
-				D2DC2C102C11C8E3004F87B8 /* ChecklistData.swift */,
+				D2DC2CAB2C162D78004F87B8 /* sb.swift */,
 				D2DC2BE32C11BCF6004F87B8 /* Main.storyboard */,
-				D2DC2CA32C12D816004F87B8 /* AddChecklistViewController.swift */,
-				D2DC2CB12C1651AC004F87B8 /* AddChecklistCell2TableViewCell.swift */,
-				D2DC2CA92C162AC0004F87B8 /* ChooseIconViewController.swift */,
-				D2DC2CAF2C16417C004F87B8 /* ChooseIconTableViewCell.swift */,
-				D2DC2CAD2C163B53004F87B8 /* ChooseIconData.swift */,
-				D2DC2C122C11CE05004F87B8 /* ChecklistItemsViewController.swift */,
-				D2DC2C152C11D0C2004F87B8 /* ChecklistItemsTableViewCell.swift */,
-				D2DC2CA12C129964004F87B8 /* ChecklistItemsData.swift */,
-				D2DC2CB32C167E7F004F87B8 /* AddItemViewController.swift */,
-				D2DC2BE62C11BCF8004F87B8 /* Assets.xcassets */,
 				D2DC2BE82C11BCF8004F87B8 /* LaunchScreen.storyboard */,
+				D2DC2BE62C11BCF8004F87B8 /* Assets.xcassets */,
 				D2DC2BEB2C11BCF8004F87B8 /* Info.plist */,
 			);
 			path = ChecklistApp;

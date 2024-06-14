@@ -19,9 +19,15 @@ class ChecklistViewController: UIViewController {
         checklistTable.delegate = self
         self.title = "Checklist"
         //setting the plus button
-        let plusButton = UIAction() { (plusButton) in
-            let pvc = sb.instantiateViewController(withIdentifier: "AddChecklistViewController") as! AddChecklistViewController
-            self.navigationController?.pushViewController(pvc, animated: true)
+        let plusButton = UIAction() { plusButton in
+            let acvc = sb.instantiateViewController(withIdentifier: "AddChecklistViewController") as! AddChecklistViewController
+            self.navigationController?.pushViewController(acvc, animated: true)
+            // MARK: Todo
+            //getting image data and appending to checklists
+            acvc.sendDataToChecklistViewController = { imageData in
+                self.checklistData.append(ChecklistData(checklistTitle: "No Title", checklistIcon: imageData, checklistDesc: "[No Items]"))
+                self.checklistTable.reloadData()
+            }
         }
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), primaryAction: plusButton)
         
@@ -52,9 +58,9 @@ extension ChecklistViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let civc = sb.instantiateViewController(withIdentifier: "ChecklistItemsViewController") as! ChecklistItemsViewController
-
         self.navigationController?.pushViewController(civc, animated: true)
         civc.title = checklistData[indexPath.row].checklistTitle
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     
